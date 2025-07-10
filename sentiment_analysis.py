@@ -11,10 +11,10 @@ global_tickers = [
     # Technology & Communication
     'AAPL', 'MSFT', 'GOOGL', 'AMZN', 'NVDA', 'META', 'TSLA', 'NFLX', 'ADBE', 
     'CRM', 'ORCL', 'CSCO', 'INTC', 'AMD', 'QCOM', 'IBM', 'VZ', 'T', 'DIS',
-    'PYPL', 'AVGO', 'TXN', 'INTU', 'ACN', 'SQ', 'UBER', 'ZM', 'ROKU', 'SPOT',
+    'PYPL', 'AVGO', 'TXN', 'INTU', 'ACN', 'UBER', 'ZM',
     
     # Financials
-    'JPM', 'BAC', 'WFC', 'GS', 'MS', 'V', 'MA', 'AXP', 'BRK.B', 'BLK', 'C', 
+    'JPM', 'BAC', 'WFC', 'GS', 'MS', 'V', 'MA', 'AXP', 'BLK', 'C', 
     'SCHW', 'PGR',
     
     # Healthcare
@@ -72,7 +72,7 @@ def get_historical_news(ticker, start_date, end_date, max_results):
         remaining_months = (end_date.year - current_date.year) * 12 + (end_date.month - current_date.month) + 1
 
         max_results_per_month = remaining_results // remaining_months
-        
+
         if max_results_per_month == 0:
             max_results_per_month = 1
 
@@ -206,10 +206,10 @@ def analyze_tons_of_stocks(tickers, period='1d', start_date=None, end_date=None,
 
     sia = SentimentIntensityAnalyzer()
 
-    for ticker in tickers:
+    for i, ticker in enumerate(tickers):
         all_scored_headlines = []
 
-        print(f"\n--- Analyzing {ticker} ---")
+        print(f"\n--- Analyzing {ticker}, {i}/100 ---")
         news_entries = get_historical_news(ticker, start_date, end_date, max_results)
 
         if not news_entries:
