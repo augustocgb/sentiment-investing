@@ -1,0 +1,9 @@
+pandas
+numpy
+scipy
+matplotlib
+datetime
+yfinance
+csv
+nltk
+pygooglenews
